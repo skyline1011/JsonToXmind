@@ -1,0 +1,31 @@
+<assembly>
+    <id>bin</id>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <!-- 最终打包成一个用于发布的zip文件 -->
+    <formats>
+        <format>zip</format><!--打包的文件格式,也可以有：war zip tar.gz-->
+    </formats>
+
+    <!-- Adds dependencies to zip package under lib directory -->
+    <dependencySets>
+        <dependencySet>
+            <!-- 第三方jar打包进zip文件的lib目录-->
+            <useProjectArtifact>true</useProjectArtifact>
+             <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <!-- 把项目自己编译出来的jar文件，打包进zip文件的根目录 -->
+        <fileSet>
+            <!--<directory>${project.build.directory}</directory>-->
+            <!--<outputDirectory></outputDirectory>-->
+            <directory>lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
